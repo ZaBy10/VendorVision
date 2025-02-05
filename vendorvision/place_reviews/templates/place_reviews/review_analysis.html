@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Reviews</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f4f6f9;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .review-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .review-list li {
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .review-list li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        /* Sentiment-based backgrounds */
+        .review-positive {
+            background-color: #e6f3e6;
+            border-left: 5px solid #2e7d32;
+        }
+        .review-negative {
+            background-color: #f9e6e6;
+            border-left: 5px solid #d32f2f;
+        }
+        .review-neutral {
+            background-color: #f0f0f0;
+            border-left: 5px solid #757575;
+        }
+        .sentiment-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .sentiment-positive {
+            background-color: #e6f3e6;
+            color: #2e7d32;
+        }
+        .sentiment-negative {
+            background-color: #f9e6e6;
+            color: #d32f2f;
+        }
+        .sentiment-neutral {
+            background-color: #f0f0f0;
+            color: #757575;
+        }
+        .analyze-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 12px 20px;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .analyze-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Business Reviews</h1>
+        <ul class="review-list">
+            {% for result in sentiment_results %}
+                <li class="review-{{ result.sentiment|lower }}">
+                    <span class="sentiment-badge sentiment-{{ result.sentiment|lower }}">
+                        {{ result.sentiment }} ({{ result.sentiment_score|floatformat:2 }})
+                    </span>
+                    <strong>Review:</strong> {{ result.review }}<br>
+                    <strong>Rating:</strong> {{ result.rating }} / 5<br>
+                    <strong>Author:</strong> {{ result.author }}
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'review_dashboard' place_id=place_id %}" class="analyze-btn">Analyse Reviews</a>
+    </div>
+</body>
+</html>

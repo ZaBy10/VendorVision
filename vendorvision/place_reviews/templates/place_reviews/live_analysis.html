@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Live Sentiment Analysis</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Faculty+Glyphic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Faculty+Glyphic&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="li_anaa.css"> -->
+    <link rel="stylesheet" href="{% static 'css\li_anaa.css' %}">
+</head>
+<body>
+
+    <h1>Live Sentiment Analysis</h1>
+    <p class="info1">Type or paste the text to be analysed below</p>
+    <div class="analysis-form">
+        <textarea id="reviewText" rows="4" placeholder="Enter your review here..."></textarea>
+        <button onclick="analyzeSentiment()">Analyze Sentiment</button>
+    </div>
+
+    <div id="sentimentResult" class="sentiment-result">
+        <h3>Analysis Result:</h3>
+        <p><strong>Sentiment:</strong> <span id="sentiment"></span></p>
+        <p><strong>Score:</strong> <span id="score"></span></p>
+    </div>
+
+    <a href="{% url 'index' %}" class="back-link">← Back to Main Page</a>
+
+    <script>
+        function analyzeSentiment() {
+            const reviewText = document.getElementById('reviewText').value;
+            if (!reviewText.trim()) {
+                alert('Please enter a review text');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('review_text', reviewText);
+
+            fetch('/analyze_live_review/', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultDiv = document.getElementById('sentimentResult');
+                const sentimentSpan = document.getElementById('sentiment');
+                const scoreSpan = document.getElementById('score');
+
+                resultDiv.style.display = 'block';
+                resultDiv.className = 'sentiment-result ' + data.sentiment.toLowerCase();
+                sentimentSpan.textContent = data.sentiment;
+                scoreSpan.textContent = data.sentiment_score;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while analyzing the sentiment');
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+:root {
+    --primary-bg: #246470eb;
+    --secondary-bg: #4f3e05;
+    --accent-color: #201911;
+    --button-hover: #2d5d65;
+    --button-color: #43cee6;
+    --primary-font: "Faculty Glyphic", sans-serif;
+}
+
+body {
+    font-family: var(--primary-font);
+    background-color: var(--primary-bg);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1{
+    text-align: center;
+    font-size: 3.7rem;
+    font-weight: 550;
+    color: white;
+    margin-top: 110px;
+    margin-bottom: 0px;
+
+}
+
+h3{
+    font-size: 1rem;
+    font-weight: 250;
+    color: white;
+    font-style: italic;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    padding-left: 130px;
+}
+
+p{
+    color: white;
+    margin-top: 10px;
+    padding-top:50px;
+    padding-bottom: 35px;
+    margin:10px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 8px;
+    margin: 5px 0;
+    width: 100%;
+    max-width: 300px;
+}
+
+.inputContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Creates two equal columns */
+    gap: 20px; /* Space between columns and rows */
+    margin-bottom: 30px;
+    color: white;
+}
+
+label{
+    display:flex;
+
+}
+
+button {
+    max-width: 200px;
+    align-content: center;
+    font-family: "Faculty Glyphic", sans-serif;
+    margin-left: 300px;
+    padding: 13px 30px;
+    margin-top: 20px ;
+    background-color: #2d5d65;
+    color: white;
+    font-weight: 400;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #43cee6;
+}
+
+.info2{
+    font-style: italic;
+}
+
+.live-analysis-link {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #36a5b9;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.live-analysis-link:hover {
+    background-color: #233639;
+}

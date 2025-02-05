@@ -63,19 +63,19 @@ Access the app at http://127.0.0.1:8000/
 📂 Project Structure  
 
 VendorVision/  
-│── place_reviews/             # Django App  
-│   ├── templates/             # HTML Templates  
-│   │   ├── index.html         # Search page  
-│   │   ├── select_branch.html # Select a business branch  
-│   │   ├── review_analysis.html # Displays analyzed reviews  
-│   │   ├── review_dashboard.html # Interactive sentiment dashboard  
-│   │   ├── live_analysis.html # Analyze user-provided reviews  
-│   ├── views.py               # Main business logic (API integrations, NLP, AI)  
-│   ├── urls.py                # URL mappings  
-│── static/                    # CSS & JS files  
-│── requirements.txt           # Python dependencies  
-│── manage.py                  # Django project manager  
-│── README.md                  # Documentation  
+│── place_reviews/            
+│   ├── templates/            
+│   │   ├── index.html        
+│   │   ├── select_branch.html 
+│   │   ├── review_analysis.html 
+│   │   ├── review_dashboard.html 
+│   │   ├── live_analysis.html 
+│   ├── views.py               
+│   ├── urls.py               
+│── static/                     
+│── requirements.txt           
+│── manage.py                   
+│── README.md                  
 
 
 🎨 Interactive Dashboard  
